@@ -1,0 +1,47 @@
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Restaurant:</strong>
+  <%= @restaurant.name %> |
+  <%= @restaurant.address1 %> |
+  <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+  <%= link_to 'Back', root_path %> |
+  <%= link_to 'Add Event', new_event_path(restaurant_id: @restaurant.id) %> |
+  <%= render 'follow/follow_restaurant_form' %>
+</p>
+
+
+
+<div style='width: 800px; padding: 100px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<%= render 'restaurants/nearby' %>
+
+<h3>Events @ <%=  @restaurant.name %></h3>
+<ul>
+    <% if @restaurant.events.first != nil %>
+      <% for event in @restaurant.events %>
+        <li> <%= event.day %>:  <%= link_to (event.description), event_path(event.id) %> </li>
+      <% end %>
+    <% else %>
+      <li> No Events...<%= link_to 'Add Event Now', new_event_path(@restaurant.id) %></li>
+    <% end %>
+</ul>
+
+<script type='text/javascript'>
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: { }, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(16);
+  });
+</script>
+
+
+
+
+
+

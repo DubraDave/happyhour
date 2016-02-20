@@ -1,0 +1,6 @@
+<h3>Nearby Locations</h3>
+<ul>
+    <% for restaurant in @restaurant.nearbys(10) %>
+      <li><%= link_to restaurant.name + ' ', restaurant %>(<%= restaurant.distance.round(1) %> miles)</li>
+    <% end %>
+</ul>

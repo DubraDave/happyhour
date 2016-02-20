@@ -1,0 +1,21 @@
+<h1>Followed Events</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Day</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_user.event_feed.each do |event| %>
+      <tr>
+        <td><%= link_to event.description, event %></td>
+        <td><%= event.day %></td>
+        <td><%= event.restaurant.name %> miles</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

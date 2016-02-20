@@ -1,0 +1,24 @@
+
+<header>
+	
+	<nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
+          <a class="navbar-brand" href="/">| HappyHour App |</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+	<% if user_signed_in? %>
+		<%= link_to 'Sign Out', destroy_user_session_path, :method => :delete  %>
+	<% else %>
+		<%= link_to 'Sign Up', new_user_registration_path %> | <%= link_to 'Sign In', user_session_path %>
+	<% end %>
+
+</header> 

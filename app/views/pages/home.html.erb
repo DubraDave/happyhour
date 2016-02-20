@@ -1,0 +1,12 @@
+
+<!-- <p><%= user_signed_in? ? 'User signed in' : 'User not signed in'%></p> -->
+
+<p><%= render 'restaurants/favorites' %></p>
+
+<p><%= render 'events/favorites' %></p>
+
+<p><%= link_to "See All Events", events_path %> | <%= link_to "Add an Event", new_event_path %></p>
+
+<p><%= link_to "See All Restaurants", restaurants_path %> | <%= link_to "Add a Restaurant", new_restaurant_path %></p>
+
+<p>© <%= Date.today.year %> HappyHour App.</p>

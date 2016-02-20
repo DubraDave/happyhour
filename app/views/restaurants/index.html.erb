@@ -1,0 +1,26 @@
+<h1>Listing Restaurants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Distance</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= link_to restaurant.name, restaurant %></td>
+        <td><%= restaurant.address1 %></td>
+        <td><%= restaurant.distance_to([request.location.latitude, request.location.longitude]).round(1) %> miles</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Restaurant', new_restaurant_path %>

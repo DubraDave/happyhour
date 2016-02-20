@@ -1,0 +1,9 @@
+<% unless current_user == nil %>
+  <div id="follow_form">
+  <% if current_user.following_event?(@event) %>
+    <%= render 'follow/unfollow_event' %>
+  <% else %>
+    <%= render 'follow/follow_event' %>
+  <% end %>
+  </div>
+<% end %>
